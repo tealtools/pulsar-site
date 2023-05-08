@@ -123,7 +123,7 @@ const injectLinkParseForEndpoint = ([, info]) => {
 };
 
 /** @type {import('@docusaurus/types').Config} */
-module.exports = {
+const siteConfig = {
     title: "Apache Pulsar",
     tagline: "Apache Pulsar is a distributed, open source pub-sub messaging and streaming platform for real-time workloads, managing hundreds of billions of events per day.",
     url: "https://pulsar.apache.org",
@@ -420,3 +420,5 @@ module.exports = {
         },
       ],
 };
+
+export default siteConfig;

@@ -10,7 +10,7 @@ const ShortInfo: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
 
   return (
-    <div className={`${s.block} ${navigator.userAgent.indexOf('Firefox') > 1 ? s.static_background : s.dynamic_background}`}>
+    <div className={`${s.block} ${navigator.userAgent.includes('Firefox') ? s.static_background : s.dynamic_background}`}>
       <div className={`${s.container} ${s.short_container}`}>
         <Parallax>
           <div className={s.docs_container}>

@@ -2,15 +2,15 @@ import React from 'react';
 
 import Button from '../../../ui/Button/Button';
 import Parallax from './Parallax/Parallax';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import s from './ShortInfo.module.css';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const ShortInfo: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
 
   return (
-    <div className={s.block}>
+    <div className={`${s.block} ${navigator.userAgent.indexOf('Firefox') > 1 ? s.static_background : s.dynamic_background}`}>
       <div className={`${s.container} ${s.short_container}`}>
         <Parallax>
           <div className={s.docs_container}>

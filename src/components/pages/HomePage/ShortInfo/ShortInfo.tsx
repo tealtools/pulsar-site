@@ -9,7 +9,7 @@ import s from './ShortInfo.module.css';
 // The background SVG animation looks bad in Firefox, so we use a static image.
 // Regex is copied from:
 // https://github.com/DamonOehlman/detect-browser/blob/546e6f1348375d8a486f21da07b20717267f6c49/src/index.ts#LL152C15-L152C15
-const isFirefox = /Firefox\/([0-9\.]+)(?:\s|$)/.test(navigator.userAgent);
+const isFirefox = typeof window === 'undefined' ? false : /Firefox\/([0-9\.]+)(?:\s|$)/.test(navigator.userAgent);
 
 const ShortInfo: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();

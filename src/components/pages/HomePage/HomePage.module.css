@@ -1,0 +1,55 @@
+.Page {
+  position: relative;
+  background: #fff;
+}
+
+.OtherScreens {
+  position: relative;
+  z-index: 1; /* Fix first screen overlap */
+}
+
+.Background {
+  position: fixed;
+  height: 200vh;
+  width: 100vw;
+  pointer-events: none;
+
+  background-image: url('./img/background.svg');
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+@media (orientation: landscape) and (min-width: 1001px) {
+  .Background {
+    background-position: 30% 15%;
+    background-size: 140%;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1000px) {
+  .Background {
+    background-position: 50% 0;
+    background-size: 200%;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 1001px) {
+  .Background {
+    background-position: 57% -25%;
+    background-size: 200%;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 1000px) {
+  .Background {
+    background-position: 57% 50%;
+    background-size: 200%;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 480px) {
+  .Background {
+    background-position: 69% -26%;
+    background-size: 350%;
+  }
+}

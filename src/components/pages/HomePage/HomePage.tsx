@@ -11,8 +11,6 @@ import useScrollPosition from './useScrollPosition';
 const HomePage = () => {
   const scrollPosition = useScrollPosition();
 
-  const blurPx = scrollPosition * 0.1;
-
   return (
     <Layout
       title={"Apache Pulsar"}
@@ -20,11 +18,7 @@ const HomePage = () => {
     >
       <div className={s.Page}>
         <div
-          className={s.Background}
-          style={{
-            filter: `blur(${blurPx < 24 ? blurPx : blurPx}px)`,
-            willChange: 'filter'
-          }}
+          className={`${s.Background} ${scrollPosition > 0 ? s.BlurredBackground : ''}`}
         />
         <div className={s.FirstScreen}>
           <ShortInfo />

@@ -9,10 +9,10 @@ const useScrollPosition = () => {
     }
 
     const updatePosition = () => {
-      setScrollPosition(window.pageYOffset);
+      setScrollPosition(window.scrollY);
     }
+
     window.addEventListener("scroll", updatePosition);
-    updatePosition();
     return () => window.removeEventListener("scroll", updatePosition);
   }, []);
 

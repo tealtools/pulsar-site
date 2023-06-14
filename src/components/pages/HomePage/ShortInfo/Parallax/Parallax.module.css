@@ -7,6 +7,14 @@
 .component {
   position: fixed;
   top: 35%;
+
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+.component_disappeared {
+  opacity: 0;
+  transition: opacity 0.5s linear;
 }
 
 @media (max-width: 800px) {

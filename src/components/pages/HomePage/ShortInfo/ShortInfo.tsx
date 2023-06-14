@@ -6,12 +6,14 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import s from './ShortInfo.module.css';
 import ScreenTitle from '../ui/ScreenTitle/ScreenTitle';
+import useScrollPosition from '../useScrollPosition';
 
 const versions = require("@site/versions.json");
 const latestVersion = versions[0];
 
 const ShortInfo: React.FC = () => {
   const { siteConfig } = useDocusaurusContext();
+  const scrollPosition = useScrollPosition();
 
   return (
     <section className={`${s.block}`}>
@@ -40,7 +42,9 @@ const ShortInfo: React.FC = () => {
         </Parallax>
       </div>
 
-      <div className={s.fullsize_container}>
+      <div
+        className={`${s.fullsize_container} ${scrollPosition > 0 ? s.visible_fullsize_container : ''}`}
+      >
         <div className={s.container}>
           <div className={s.info_container}>
             <ScreenTitle>

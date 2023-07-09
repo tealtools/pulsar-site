@@ -41,12 +41,12 @@
 .RapidHorizontalScalabilityCard {
   background: url(./images/rapid-horizontal-scalability.svg), var(--orange-4);
   background-repeat: no-repeat;
-  background-size: 68%;
+  background-size: 74%;
   background-position: 1.5rem 1.5rem;
 }
 
-.RapidHorizontalScalabilityCardFirstParagraph {
-  margin-bottom: 6.8rem;
+.RapidHorizontalScalabilityCardMainContent {
+  margin-bottom: 3.4rem;
 }
 
 .LowLatencyCard {
@@ -56,8 +56,8 @@
   background-position: left 1.5rem top 22rem;
 }
 
-.LowLatencyCardFirstParagraph {
-  margin-bottom: 22rem;
+.LowLatencyCardMainContent {
+  margin-bottom: 20rem;
 }
 
 .LowLatencyCardColumns {
@@ -78,10 +78,6 @@
   background-position: right 1.5rem top 1.5rem;
 }
 
-.SupportManyTopicsCardFirstParagraph {
-  margin-bottom: 4rem;
-}
-
 .MultiTenancyCard {
   background: url(./images/multi-tenancy.svg), var(--white);
   background-repeat: no-repeat;
@@ -93,9 +89,6 @@
   margin-top: 23rem;
 }
 
-.MultiTenancyCardFirstParagraph {
-}
-
 .LoadBalancingCard {
   background: url(./images//load-balancing.svg), var(--primary-4);
 
@@ -104,8 +97,8 @@
   background-position: right 1.5rem top 1.5rem;
 }
 
-.LoadBalancingCardFirstParagraph {
-  margin-bottom: 11rem;
+.LoadBalancingCardMainContent {
+  margin-bottom: 8rem;
 }
 
 .K8sReadyCard {
@@ -119,7 +112,7 @@
   background: url(./images/geo-replication.svg), var(--primary-6);
   background-repeat: no-repeat;
   background-size: 20%;
-  background-position: right 1.5rem top 2rem;
+  background-position: right 1.5rem center;
 }
 
 .GeoReplicationCardColumns {
@@ -167,12 +160,12 @@
 .ServerlessFunctionsCard {
   background: url(./images/serverless-functions.svg), var(--orange-6);
   background-repeat: no-repeat;
-  background-size: 35%;
+  background-size: 40%;
   background-position: left 1.5rem top 1.5rem;
 }
 
-.ServerlessFunctionsCardFirstParagraph {
-  margin-bottom: 7rem;
+.ServerlessFunctionsCardMainContent {
+  margin-bottom: 8rem;
 }
 
 .ConnectorsCard {
@@ -182,6 +175,6 @@
   background-position: right 1.5rem top 1.5rem;
 }
 
-.ConnectorsCardFirstParagraph {
+.ConnectorsCardMainContent {
   margin-bottom: 2.5rem;
 }

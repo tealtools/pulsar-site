@@ -4,6 +4,7 @@ import s from './Card.module.css'
 export type CardProps = {
   leftContent?: ReactNode
   rightContent?: ReactNode
+  bottomContent?: ReactNode
   className?: string
   style?: CSSProperties
   showMore?: {
@@ -32,12 +33,17 @@ const Card: React.FC<CardProps> = (props) => {
       <div className={s.Columns}>
         <div className={s.LeftColumn}>
           {props.leftContent}
-          {(!isShowMore && props.showMore && props.showMore.position === 'left') ? showMoreButton : null}
+          {(!isShowMore && !props.bottomContent && props.showMore && props.showMore.position === 'left') ? showMoreButton : null}
         </div>
         <div className={s.RightColumn}>
           {props.rightContent}
-          {(!isShowMore && props.showMore && props.showMore.position === 'right') ? showMoreButton : null}
+          {(!isShowMore && !props.bottomContent && props.showMore && props.showMore.position === 'right') ? showMoreButton : null}
         </div>
+
+        {props.bottomContent && <div className={s.BottomContent}>
+          {props.bottomContent}
+          {(props.bottomContent && props.showMore) ? showMoreButton : null}
+        </div>}
       </div>
 
       {isShowMore ? (

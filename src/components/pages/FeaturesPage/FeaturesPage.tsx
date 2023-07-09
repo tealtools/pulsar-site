@@ -7,9 +7,9 @@ const cards: CardProps[] = [
   {
     className: s.RapidHorizontalScalabilityCard,
     rightContent: (
-      <div>
+      <div className={s.RapidHorizontalScalabilityCardMainContent}>
         <h3>Rapid Horizontal Scalability</h3>
-        <p className={s.RapidHorizontalScalabilityCardFirstParagraph}>
+        <p>
           Scales horizontally to handle the increased load. Its unique <a target='_blank' href='https://pulsar.apache.org/docs/concepts-architecture-overview/'>design</a> and separate storage layer enable controlling the sudden surge in traffic by scaling out in seconds.
         </p>
       </div>
@@ -28,9 +28,9 @@ const cards: CardProps[] = [
   {
     className: s.LowLatencyCard,
     leftContent: (
-      <div>
+      <div className={s.LowLatencyCardMainContent}>
         <h3>Low-latency, messaging and streaming</h3>
-        <p className={s.LowLatencyCardFirstParagraph}>
+        <p>
           Acknowledge messages individually (RabbitMQ style) or cumulative per partition (i.e., offset-like). Enables use cases such as distributed work queues or order-preserving data streams at massive scales (hundreds of nodes) and low latency (&lt;10ms).
         </p>
       </div>
@@ -39,7 +39,7 @@ const cards: CardProps[] = [
       position: 'left',
       bottomContent: (
         <div>
-          <p className={s.LowLatencyCardSingleColumn}>
+          <p className={s.LowLatencyCardSingleColumn}  style={{ marginBottom: '2rem'}}>
             <strong>Pulsar offers writing messages to topics and partitioned topics (topics divided into partitions). Messages can be consumed in multiple ways:</strong>
           </p>
           <div className={s.LowLatencyCardColumns}>
@@ -62,7 +62,7 @@ const cards: CardProps[] = [
               </div>
             </div>
           </div>
-          <div className={s.LowLatencyCardSingleColumn}>
+          <div className={s.LowLatencyCardSingleColumn} style={{ marginTop: '5rem'}}>
             <p className={s.SmallText}>
               All of this is supported at very low latency (&lt;10 ms), both for producing messages and end-to-end latency, and large scale (hundreds of nodes) cluster.
             </p>
@@ -76,7 +76,7 @@ const cards: CardProps[] = [
     leftContent: (
       <div>
         <h3>Supports up to 1M topics</h3>
-        <p className={s.SupportManyTopicsCardFirstParagraph}>
+        <p>
           Pulsar's unique architecture supports up to 1 million topics in a single cluster. Simplify your architecture by avoiding multiplexing multiple streams into a single topic.
         </p>
 
@@ -113,10 +113,9 @@ const cards: CardProps[] = [
   {
     className: s.LoadBalancingCard,
     leftContent: (
-      <div>
+      <div className={s.LoadBalancingCardMainContent}>
         <h3>Automatic Load Balancing</h3>
-
-        <p className={s.LoadBalancingCardFirstParagraph}>
+        <p>
           Add or remove nodes and let Pulsar load balance topic bundles automatically. Hot spotted topic bundles are automatically split and evenly distributed across the brokers.
         </p>
       </div>
@@ -290,9 +289,9 @@ const cards: CardProps[] = [
   {
     className: s.ServerlessFunctionsCard,
     rightContent: (
-      <div>
+      <div className={s.ServerlessFunctionsCardMainContent}>
         <h3>Serverless Functions</h3>
-        <p className={s.ServerlessFunctionsCardFirstParagraph}>
+        <p>
           Write and deploy functions natively using Pulsar Functions. Process messages using Java, Go, or Python without deploying fully-fledged applications. Kubernetes runtime is bundled.
         </p>
       </div>
@@ -315,9 +314,9 @@ const cards: CardProps[] = [
   {
     className: s.ConnectorsCard,
     leftContent: (
-      <div>
+      <div className={s.ConnectorsCardMainContent}>
         <h3>Official 3rd party Connectors</h3>
-        <p className={s.ConnectorsCardFirstParagraph}>
+        <p>
           Write and deploy functions natively using Pulsar Functions. Process messages using Java, Go, or Python without deploying fully-fledged applications. Kubernetes runtime is bundled.
         </p>
       </div>
@@ -336,7 +335,7 @@ const cards: CardProps[] = [
         </p>
       )
     }
-  }
+  },
 ];
 
 const FeaturesPage: React.FC = () => {
@@ -365,6 +364,13 @@ const FeaturesPage: React.FC = () => {
             </div>
           ))}
         </div>
+
+        {/* <div>
+          <Card
+            className={s.LargeMessagesCard}
+
+          />
+        </div> */}
       </div>
     </Layout>
   );

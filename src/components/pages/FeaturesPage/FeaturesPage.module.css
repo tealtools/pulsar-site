@@ -1,0 +1,180 @@
+.FeaturesPage {
+  position: relative;
+  background-color: #fff;
+}
+
+.Cards {
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Intro {
+  padding: 10rem 0;
+  line-height: 3rem;
+}
+
+.IntroTextA,
+.IntroTextB {
+  font-size: 2.5rem;
+  color: var(--primary-0);
+  font-weight: 400;
+  margin: 0;
+  max-width: 35rem;
+}
+
+.IntroTextC {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+  max-width: 42rem;
+}
+
+/* Cards */
+.SmallText {
+  font-size: 1.125rem;
+}
+
+.RapidHorizontalScalabilityCard {
+  background: url(./images/rapid-horizontal-scalability.svg), var(--orange-4);
+  background-repeat: no-repeat;
+  background-size: 74%;
+  background-position: 1.5rem 1.5rem;
+}
+
+.RapidHorizontalScalabilityCardMainContent {
+  margin-bottom: 3.4rem;
+}
+
+.LowLatencyCard {
+  background: url(./images/low-latency.svg), var(--yellow-5);
+  background-repeat: no-repeat;
+  background-size: calc(100% - 1.5rem);
+  background-position: left 1.5rem top 22rem;
+}
+
+.LowLatencyCardMainContent {
+  margin-bottom: 20rem;
+}
+
+.LowLatencyCardColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.LowLatencyCardSingleColumn {
+  width: calc(33.333333% - 1rem);
+  margin-bottom: 1.5rem;
+}
+
+.SupportManyTopicsCard {
+  background: url(./images/support-many-topics.svg), var(--teal-6);
+  background-repeat: no-repeat;
+  background-size: 42rem;
+  background-position: right 1.5rem top 1.5rem;
+}
+
+.MultiTenancyCard {
+  background: url(./images/multi-tenancy.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: 95%;
+  background-position: left 0 top 1.5rem;
+}
+
+.MultiTenancyCardHeader {
+  margin-top: 23rem;
+}
+
+.LoadBalancingCard {
+  background: url(./images//load-balancing.svg), var(--primary-4);
+
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: right 1.5rem top 1.5rem;
+}
+
+.LoadBalancingCardMainContent {
+  margin-bottom: 8rem;
+}
+
+.K8sReadyCard {
+  background: url(./images/k8s-ready.svg), var(--primary-5);
+  background-repeat: no-repeat;
+  background-size: 58%;
+  background-position: left 0 bottom 0;
+}
+
+.GeoReplicationCard {
+  background: url(./images/geo-replication.svg), var(--primary-6);
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: right 1.5rem top 1.5rem;
+}
+
+.GeoReplicationCardColumns {
+  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.LanguagesCard {
+  background: url(./images/languages.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: calc(100% - 3rem);
+  background-position: left 1.5rem bottom 2rem;
+  padding-bottom: 16rem !important;
+}
+
+.TieredStorageCard {
+  background: var(--green-3);
+}
+
+.SchemaRegistryCard {
+  background: var(--green-4);
+}
+
+.AccessControlCard {
+  background: var(--green-5);
+}
+
+.MessagePersistencyCard {
+  background: var(--green-6);
+}
+
+.SeparateComputeFromStorageCard {
+  background: url(./images/spearate-compute-from-storage.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: right 1.5rem center;
+}
+
+.AdditionalProtocolsCard {
+  background: var(--orange-5);
+}
+
+.ServerlessFunctionsCard {
+  background: url(./images/serverless-functions.svg), var(--orange-6);
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: left 1.5rem top 1.5rem;
+}
+
+.ServerlessFunctionsCardMainContent {
+  margin-bottom: 8rem;
+}
+
+.ConnectorsCard {
+  background: url(./images/connectors.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: right 1.5rem top 1.5rem;
+}
+
+.ConnectorsCardMainContent {
+  margin-bottom: 2.5rem;
+}

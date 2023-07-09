@@ -196,9 +196,9 @@ module.exports = {
           label: "Docs",
         },
         {
-          to: "/contribute/",
+          to: "/features/",
           position: "left",
-          label: "Contribute",
+          label: "Features",
         },
         {
           type: "dropdown",

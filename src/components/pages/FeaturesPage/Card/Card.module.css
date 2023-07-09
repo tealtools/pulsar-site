@@ -1,0 +1,39 @@
+.Card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.Columns,
+.ShowMoreColumns {
+  display: flex;
+  flex: 1;
+}
+
+.LeftColumn,
+.RightColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 50%;
+}
+
+.ShowMoreButton {
+  border: none;
+  background-color: transparent;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  margin-top: auto;
+  flex: 0 1 auto;
+}
+
+.ShowMoreButton:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}

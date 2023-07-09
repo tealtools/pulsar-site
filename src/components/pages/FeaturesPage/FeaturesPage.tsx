@@ -2,6 +2,7 @@ import React from 'react';
 import s from './FeaturesPage.module.css'
 import Card, { CardProps } from './Card/Card';
 import Layout from '@theme/Layout';
+import { Dvr } from '@mui/icons-material';
 
 export type FeaturesPageProps = {};
 
@@ -131,6 +132,55 @@ const cards: CardProps[] = [
           Since Pulsar supports up to 1 million topics, the unit of balancing is not a topic but a topic bundle (a group of topics selected using hashing). The load balancer moves bundles across brokers, which moves all topics associated with the bundle between brokers.<br />
           When a bundle is under extreme load, an <a target='_blank' href='https://pulsar.apache.org/docs/administration-load-balance/'>automatic split </a> occurs to allow balancing the load of that bundle across two bundles, which can go on in succession until a balanced cluster is reached.
         </p>
+      )
+    }
+  },
+  {
+    className: s.K8sReadyCard,
+    leftContent: (
+      <div>
+        <h3>K8s Ready<br />(Cloud-native)</h3>
+        <p>
+          Pulsar was built for the cloud from day one. Both Pulsar and Bookkeeper nodes can scale up quickly as Pulsar is stateless, and Bookkeeper was designed to avoid data reshuffling while still utilizing all newly joined nodes.
+        </p>
+      </div>
+    ),
+    rightContent: (
+      <div>
+        <p className={s.SmallText}>
+          <strong>Scale-up is natively supported:</strong><br />
+          The Pulsar broker is stateless (messages are stored in Bookkeeper); hence scaling up is immediate since there is no data move to the new brokers. Pulsar has automatic load balancing, so new nodes will automatically get new topics evenly balanced across the cluster.<br />
+          Apache Bookkeeper supports scaling up natively since it doesn’t reshuffle data when starting new nodes. A topic in Pulsar is a chain of ledgers, where the last one is the active one. The active ledger is rotated quite rapidly, which means the new Bookkeeper nodes will almost immediately share the load of incoming messages.<br />
+          <br />
+          Pulsar comes bundled with k8s helm charts, which contains all the components needed to operate: Pulsar brokers, Bookkeeper, Zookeeper, Function Workers, and more.
+        </p>
+      </div>
+    )
+  },
+  {
+    className: s.GeoReplicationCard,
+    leftContent: (
+      <div>
+        <h3>Seamless Geo-Replication</h3>
+        <p>Protect against complete zone outages using replication across different geographic regions. Flexible and configurable replication strategies across distant Pulsar Clusters. Uniquely supports automatic client failover to healthy clusters.</p>
+      </div>
+    ),
+    showMore: {
+      position: 'left',
+      bottomContent: (
+        <div className={s.GeoReplicationCardColumns}>
+          <div>
+            <p className={s.SmallText}>
+              Pulsar supports the notion of a <a target='_blank' href='https://pulsar.apache.org/docs/concepts-architecture-overview/'>Pulsar Instance</a>: A set of Pulsar Clusters, each aware of each other due to a single global metadata store (i.e., ZK). You define a <a target='_blank' href='https://pulsar.apache.org/docs/concepts-replication/#replication-mechanisms'>replication policy</a> between the clusters: <a target='_blank' href='https://pulsar.apache.org/docs/concepts-replication/#active-active-replication'>active-standby</a>, active-active, and more. This allows you to have each cluster in a different region, achieving geo-replication out of the box. It provides you with data redundancy and disaster recovery.
+            </p>
+          </div>
+          <div>
+            <p className={s.SmallText}>
+              The cluster replicates the data (messages) and the <a target='_blank' href='https://pulsar.apache.org/docs/administration-geo/#replicated-subscriptions'>subscription</a> (consumer acknowledgment state).<br />
+              If that’s not enough, Pulsar clients support <a target='_blank' href='https://pulsar.apache.org/docs/concepts-cluster-level-failover/'>automatic failover</a>. If it detects that the primary cluster (using a designated URL to check that) is down, it automatically fails over to the secondary cluster. Since the data and consumption state (subscription) is replicated, you simply pick up where you left off on the primary cluster.
+            </p>
+          </div>
+        </div>
       )
     }
   }

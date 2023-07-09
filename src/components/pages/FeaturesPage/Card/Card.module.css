@@ -16,9 +16,10 @@
 
 .Columns,
 .ShowMoreColumns {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   flex: 1;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .LeftColumn,
@@ -26,7 +27,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1 0;
 }
 
 .ShowMoreButton {

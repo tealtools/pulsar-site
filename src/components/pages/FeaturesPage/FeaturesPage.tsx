@@ -2,9 +2,6 @@ import React from 'react';
 import s from './FeaturesPage.module.css'
 import Card, { CardProps } from './Card/Card';
 import Layout from '@theme/Layout';
-import { Dvr } from '@mui/icons-material';
-
-export type FeaturesPageProps = {};
 
 const cards: CardProps[] = [
   {
@@ -183,10 +180,166 @@ const cards: CardProps[] = [
         </div>
       )
     }
+  },
+  {
+    className: s.LanguagesCard,
+    leftContent: (
+      <div>
+        <h3>Official multi-language support</h3>
+        <p>
+          Officially maintained Pulsar Clients for Java, Go, Python, C++, Node.js, and C#.
+        </p>
+      </div>
+    ),
+    rightContent: (
+      <p className={s.SmallText}>
+        Pulsar has officially maintained Clients for Java, Go, Python, C++, Node.js, and C#. The details and a feature matrix comparing which feature is supported for each language can be found on the Clients’ documentation page.<br />
+        There are also unofficial clients developed by 3rd parties, such as native Node.js client, .NET, Haskell, PHP, Rust, and Scala.
+      </p>
+    )
+  },
+  {
+    className: s.TieredStorageCard,
+    leftContent: <h3>Tiered storage support for unlimited retention<br />(S3/GCS/…)</h3>,
+    rightContent: <p>Unlimited retention by seamless data offloading from Bookkeeper to blob storage (e.g., S3). Keep high performance with resiliency by keeping warm data both in Bookeeper and S3.</p>,
+    showMore: {
+      position: 'right',
+      rightContent: (
+        <p className={s.SmallText}>
+          A pulsar topic is a list of ledgers (as explained above). Only the latest ledger is considered open for writing; the other ledgers are closed - i.e., immutable.<br />
+          Pulsar <a target='_blank' href="https://pulsar.apache.org/docs/tiered-storage-overview/">supports</a> offloading those immutable ledgers into Tiered Storage such as S3, GCS, Azure BlobStore, and more. You can optionally <a target='_blank' href='https://pulsar.apache.org/reference/#/3.0.x/config/reference-configuration-broker?id=managedledgeroffloaddeletionlagms'>configure</a> how long to retain the ledgers in Bookkeeper after they have been offloaded successfully.<br />
+          This feature allows you to have unlimited retention at a low cost.<br />
+          Pulsar seamlessly switches between reading from Bookkeeper or a tiered storage system based on the ledger location, making it transparent to the client. It’s perfect for offloading “cold” data into a low-cost system, as it is assumed this data will be accessed less frequently and demand less read performance (due to the nature of tiered storage systems).<br />
+        </p>
+      )
+    }
+  },
+  {
+    className: s.SchemaRegistryCard,
+    leftContent: <h3>Built-in Schema Registry</h3>,
+    rightContent: <p>Support validating incoming and outgoing data against a topic schema. Future proof by supporting backward and forward compatibility checks for each new schema version.</p>,
+    showMore: {
+      position: 'right',
+      rightContent: (
+        <p className={s.SmallText}>
+          Pulsar has a built-in <a target='_blank' href='https://pulsar.apache.org/docs/schema-overview/'>schema registry</a>. This provides the ability to specify a schema for the messages stored in a topic. The registry supports evolving the schema with baked-in forward and backward <a target='_blank' href='https://pulsar.apache.org/docs/3.0.x/schema-understand/#schema-compatibility-check'>compatibility checks</a> to prevent making grave mistakes when producing or consuming messages with incompatible schema.
+          Several schema languages are supported, including Avro and Protobuf.
+        </p>
+      )
+    }
+  },
+  {
+    className: s.AccessControlCard,
+    leftContent: <h3>Granular Access Control</h3>,
+    rightContent: <p>Pulsar supports user authentication with the ability to set access to specific namespaces or topics with limited permissions (consume, produce, etc.)</p>,
+    showMore: {
+      position: 'right',
+      rightContent: (
+        <p className={s.SmallText}>
+          Pulsar has the notion of <a target="_blank" href="https://pulsar.apache.org/docs/security-overview/">users</a> and a list of permissions they each have for a given namespace or topic. There is a <a target='_blank' href='https://pulsar.apache.org/reference/#/3.0.x/config/reference-configuration-broker?id=superuserroles'>configured</a> list of users assigned the unique role of Super Admin, granting them access to everything. Each tenant has such a <a target="_blank" href="https://pulsar.apache.org/docs/admin-api-tenants/#update">list</a> for the role of Tenant Admin, giving users the ability to <a target='_blank' href='https://pulsar.apache.org/docs/admin-api-permissions/'>grant permissions</a> for namespaces and topics contained within the tenant.<br />
+          The permissions include: producing messages, consuming messages, running functions, and installing connectors, sinks, or sources.<br />
+          This enables an organization to empower teams to self-manage access to their application's data (typically contained within a tenant).
+        </p>
+      )
+    }
+  },
+  {
+    className: s.MessagePersistencyCard,
+    leftContent: <h3>Guaranteed message persistency</h3>,
+    rightContent: <p>Pulsar writes to Bookkeeper are guaranteed to be written to disk (a.k.a fsync), providing high resiliency to machine failures. It can be disabled to favor higher throughput.</p>,
+    showMore: {
+      position: 'right',
+      rightContent: (
+        <p className={s.SmallText}>
+          When Pulsar receives a message, it writes it to Bookkeeper using its client, which writes to 3 Bookkeeper nodes in parallel by default. The write is considered a success only if 2 Bookkeeper nodes write it successfully. Only then Pulsar acknowledge the write to the client.<br />
+          Bookkeeper, by default, writes the message to the disk, into a write-ahead-log called a <a target='_blank' href='https://bookkeeper.apache.org/docs/4.8.2/getting-started/concepts/#journals'>journal</a>, then to the memory, and only then reports the write as a success back to the client. The vital feature of Bookkeeper is that it ensures the write to disk has been flushed (written to the disk guaranteed - a.k.a. fsync) before considering the write as a success. Performance is regarded by calling the expensive fsync operation once per batch of messages.<br />
+          This default behavior is perfect for cases where you simply can’t lose a written message. You can turn it <a target='_blank' href='https://github.com/apache/bookkeeper/blob/f8d81f7eb861235d5516f7781f6eac70702b3c69/conf/bk_server.conf#L354-L360'>off</a> and thereby gain a performance gain and rely on the other replica to survive, while a Bookkeeper “repair” mechanism fixes the other replicas in the background.
+        </p>
+      )
+    }
+  },
+  {
+    className: s.SeparateComputeFromStorageCard,
+    leftContent: (
+      <div>
+        <h3>Separate Compute from Storage</h3>
+        <p style={{ marginBottom: '2rem' }}>Choose the best instance types for storage and CPU separately due to Pulsar's unique architecture. Support massive parallel query engines by a direct read from Bookkeeper.</p>
+        <p className={s.SmallText}>
+          Pulsar architecture comprises a broker handling read and writes and Apache Bookkeeper as the storage layer. This allows you to select the best instance type for Pulsar brokers - CPU optimized, and the best instance type for Bookkeeper nodes - I/O optimized machine.<br />
+          This architecture also enables Big Data support by reading the data directly from Bookkeeper without going through Pulsar brokers - great for massive parallel query engines.
+        </p>
+      </div>
+    )
+  },
+  {
+    className: s.AdditionalProtocolsCard,
+    leftContent: <h3>Built to support additional protocols<br />(Kafka, RabbitMQ, …)</h3>,
+    rightContent: <p>Use popular messaging system clients with Pulsar as the backend, powered by community plugins: Kafka, RabbitMQ, and more. This facilitates moving to Pulsar gradually.</p>,
+    showMore: {
+      position: 'right',
+      rightContent: (
+        <p className={s.SmallText}>
+          Pulsar has many plugin types, among them one called Protocol Handler. It allows adding additional messaging protocols to the existing Pulsar binary protocol. The plugin is in charge of reading the data from the socket, and translating it to Pulsar commands, such as writing a message, listing a topic, etc.
+          <br />
+          <br />
+          This has allowed the community to develop support for additional protocols which are widely adopted, such as AMQP, Kafka, RabbitMQ, RocketMQ, and MQTT. See this <a target='_blank' href="https://pulsar.apache.org/ecosystem/">page</a> for a listing of existing community protocol handlers. This enabled working, for example, with the Kafka client or RabbitMQ client but with Pulsar as the backend system.
+        </p>
+      )
+    }
+  },
+  {
+    className: s.ServerlessFunctionsCard,
+    rightContent: (
+      <div>
+        <h3>Serverless Functions</h3>
+        <p className={s.ServerlessFunctionsCardFirstParagraph}>
+          Write and deploy functions natively using Pulsar Functions. Process messages using Java, Go, or Python without deploying fully-fledged applications. Kubernetes runtime is bundled.
+        </p>
+      </div>
+    ),
+    showMore: {
+      position: 'right',
+      rightContent: (
+        <p className={s.SmallText}>
+          Pulsar is great for ingesting messages, consuming them in various ways, and retaining them for your desired duration. People often write a fully-fledged application to consume and run complex logic on them. On some occasions, you need a simple transformation to the messages. You can roll your own app for it or use a stream processing tool like Spark, Flink, etc. Both are overkill: Rolling an app for a minor message modification still requires writing a lot of plumbing code, while rolling Spark / Flink requires lots of knowledge of those systems and time to maintain them.
+          <br />
+          <br />
+          Pulsar offers a lightweight stream processing framework called <a target='_blank' href='https://pulsar.apache.org/docs/functions-overview/'>Pulsar&nbsp;Functions</a>. It enables you to author a function in a single file in Java, Go, or Python and deploy it to Pulsar Functions, which runs that function for you. Functions will run on each message in the topic defined and have the option to write a message on any topic. It’s perfect for simple message transformations: Read a message from a topic, transform it, and write it to another topic. It’s also been used for various bigger tasks, such as ML training.
+          <br />
+          <br />
+          Pulsar Functions support <a target='_blank' href='https://pulsar.apache.org/docs/functions-deploy-cluster-parallelism/'>parallelism</a> by allowing you to specify how many instances of the function it will run. It has a unique process for coordinating and executing those functions called <a target='_blank' href='https://pulsar.apache.org/docs/functions-concepts/#function-worker'>Pulsar Function Worker</a>. It <a target='_blank' href='https://pulsar.apache.org/docs/3.0.x/functions-concepts/#function-runtime'>supports</a> running functions in a thread, a dedicated process, or a pod in K8s.
+        </p>
+      )
+    }
+  },
+  {
+    className: s.ConnectorsCard,
+    leftContent: (
+      <div>
+        <h3>Official 3rd party Connectors</h3>
+        <p className={s.ConnectorsCardFirstParagraph}>
+          Write and deploy functions natively using Pulsar Functions. Process messages using Java, Go, or Python without deploying fully-fledged applications. Kubernetes runtime is bundled.
+        </p>
+      </div>
+    ),
+    showMore: {
+      position: 'left',
+      leftContent: (
+        <p className={s.SmallText}>
+          Pulsar has a built-in framework called <a target='_blank' href='https://pulsar.apache.org/docs/io-overview/'>Pulsar IO</a>, which simplifies authoring and executing Connectors, which enables reading data from a third-party system into a Pulsar topic or writing messages stored in Pulsar topics to a third-party system.
+          <br />
+          <br />
+          Pulsar has several officially maintained connectors of popular 3rd parties: MySQL, Elasticsearch, Cassandra, and more. The complete list is available <a target='_blank' href='https://pulsar.apache.org/docs/io-connectors/'>here</a>.
+          <br />
+          <br />
+          Pulsar IO was written on top of Pulsar Functions, so a Connector (be it Sink or Source) is a Pulsar Function. The connector runs using Pulsar Function Worker based on the runtime chosen (thread, process, or K8s pod). This means it also supports parallelism (increasing the number of instances running the connector and dividing the work among them).
+        </p>
+      )
+    }
   }
 ];
 
-const FeaturesPage: React.FC<FeaturesPageProps> = (props) => {
+const FeaturesPage: React.FC = () => {
   return (
     <Layout
       title='Features'

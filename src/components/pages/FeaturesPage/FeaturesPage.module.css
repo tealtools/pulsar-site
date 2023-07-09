@@ -128,3 +128,60 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
+
+.LanguagesCard {
+  background: url(./images/languages.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: calc(100% - 3rem);
+  background-position: left 1.5rem bottom 2rem;
+  padding-bottom: 16rem !important;
+}
+
+.TieredStorageCard {
+  background: var(--green-3);
+}
+
+.SchemaRegistryCard {
+  background: var(--green-4);
+}
+
+.AccessControlCard {
+  background: var(--green-5);
+}
+
+.MessagePersistencyCard {
+  background: var(--green-6);
+}
+
+.SeparateComputeFromStorageCard {
+  background: url(./images/spearate-compute-from-storage.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: right 1.5rem center;
+}
+
+.AdditionalProtocolsCard {
+  background: var(--orange-5);
+}
+
+.ServerlessFunctionsCard {
+  background: url(./images/serverless-functions.svg), var(--orange-6);
+  background-repeat: no-repeat;
+  background-size: 35%;
+  background-position: left 1.5rem top 1.5rem;
+}
+
+.ServerlessFunctionsCardFirstParagraph {
+  margin-bottom: 7rem;
+}
+
+.ConnectorsCard {
+  background: url(./images/connectors.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: right 1.5rem top 1.5rem;
+}
+
+.ConnectorsCardFirstParagraph {
+  margin-bottom: 2.5rem;
+}

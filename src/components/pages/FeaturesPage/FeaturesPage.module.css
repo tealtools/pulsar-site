@@ -112,7 +112,7 @@
   background: url(./images/geo-replication.svg), var(--primary-6);
   background-repeat: no-repeat;
   background-size: 20%;
-  background-position: right 1.5rem center;
+  background-position: right 1.5rem top 1.5rem;
 }
 
 .GeoReplicationCardColumns {

@@ -34,6 +34,10 @@
 }
 
 /* Cards */
+.SmallText {
+  font-size: 1.125rem;
+}
+
 .RapidHorizontalScalabilityCard {
   background: url(./images/rapid-horizontal-scalability.svg), var(--orange-4);
   background-repeat: no-repeat;
@@ -49,7 +53,7 @@
   background: url(./images/low-latency.svg), var(--yellow-5);
   background-repeat: no-repeat;
   background-size: calc(100% - 1.5rem);
-  background-position: left 1.5rem top 18rem;
+  background-position: left 1.5rem top 22rem;
 }
 
 .LowLatencyCardFirstParagraph {
@@ -65,4 +69,41 @@
 .LowLatencyCardSingleColumn {
   width: calc(33.333333% - 1rem);
   margin-bottom: 1.5rem;
+}
+
+.SupportManyTopicsCard {
+  background: url(./images/support-many-topics.svg), var(--teal-6);
+  background-repeat: no-repeat;
+  background-size: 42rem;
+  background-position: right 1.5rem top 1.5rem;
+}
+
+.SupportManyTopicsCardFirstParagraph {
+  margin-bottom: 4rem;
+}
+
+.MultiTenancyCard {
+  background: url(./images/multi-tenancy.svg), var(--white);
+  background-repeat: no-repeat;
+  background-size: 95%;
+  background-position: left 0 top 1.5rem;
+}
+
+.MultiTenancyCardHeader {
+  margin-top: 23rem;
+}
+
+.MultiTenancyCardFirstParagraph {
+}
+
+.LoadBalancingCard {
+  background: url(./images//load-balancing.svg), var(--primary-4);
+
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: right 1.5rem top 1.5rem;
+}
+
+.LoadBalancingCardFirstParagraph {
+  margin-bottom: 11rem;
 }
